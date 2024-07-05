@@ -1,12 +1,48 @@
-const http = require('http');
-const PORT = 3000;
+const express = require("express");
+const nodemailer = require("nodemailer");
+const bodyParser = require("body-parser");
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware para analizar los cuerpos de las solicitudes en formato JSON
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Ruta para manejar el envío del formulario
+app.post("/enviar-correo", (req, res) => {
+  const { nombre, email, mensaje } = req.body;
+
+  // Configurar el transporte del correo electrónico usando nodemailer
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "reno7882@gmail.com", // Cambiar por tu dirección de correo desde donde se enviarán los correos
+      pass: "hvxg lsjg ypkz avpw", // Cambiar por la contraseña de tu correo
+    },
+  });
+
+  // Configurar los datos del correo
+  let mailOptions = {
+    from: "reno7882@gmail.com", // Cambiar por tu dirección de correo
+    to: "rceron@javer.com.mx", // Dirección de correo a la que se enviará el formulario
+    subject: "Nuevo mensaje desde el formulario de contacto",
+    text: `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`,
+  };
+
+  // Enviar el correo electrónico
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error al enviar el correo:", error);
+      res.status(500).send("Hubo un error al enviar el correo");
+    } else {
+      console.log("Correo enviado: %s", info.response);
+      res.status(200).send("Correo enviado correctamente");
+    }
+  });
 });
 
-server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+// Iniciar el servidor
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
