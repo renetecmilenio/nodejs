@@ -25,7 +25,7 @@ app.use(cors(corsOptions));
 
 // Ruta para manejar el envío del formulario
 app.post("/enviar-correo", (req, res) => {
-  const { nombre, email, mensaje } = req.body;
+  const { nombre, telefono, email, desarrollo, mensaje } = req.body;
 
   // Configurar el transporte del correo electrónico usando nodemailer
   let transporter = nodemailer.createTransport({
@@ -41,7 +41,7 @@ app.post("/enviar-correo", (req, res) => {
     from: "reno7882@gmail.com", // Cambiar por tu dirección de correo
     to: "rceron@javer.com.mx", // Dirección de correo a la que se enviará el formulario
     subject: "Nuevo mensaje desde el formulario de contacto",
-    text: `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`,
+    text: `Nombre: ${nombre}\nTeléfono: ${telefono}\nEmail: ${email}\nDesarrollo: ${desarrollo}Mensaje: ${mensaje}`,
   };
 
   // Enviar el correo electrónico
