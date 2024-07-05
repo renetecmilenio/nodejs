@@ -51,7 +51,9 @@ app.post("/enviar-correo", (req, res) => {
       res.status(500).send("Hubo un error al enviar el correo");
     } else {
       console.log("Correo enviado: %s", info.response);
-      res.status(200).send("Correo enviado correctamente");
+      // res.status(200).send("Correo enviado correctamente");
+          // Redirigir al usuario a la página de gracias
+    res.redirect('https://javer.com.mx/sugerencias-gracias');
     }
   });
 });
