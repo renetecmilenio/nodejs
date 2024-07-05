@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.js", // Archivo principal de tu aplicación Node.js
+        "use": "@vercel/node" // Indica que quieres utilizar Vercel para Node.js
+      }
+    ],
+    "routes": [
+      {
+        "src": "/enviar-correo",
+        "methods": ["POST"],
+        "dest": "/index.js" // Ruta y método HTTP para manejar el envío de correos
+      }
+    ],
+    "env": {
+      "PORT": 3000 // Puerto en el que se ejecutará tu servidor Express
+    }
+  }

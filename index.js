@@ -1,6 +1,7 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -8,6 +9,19 @@ const PORT = process.env.PORT || 3000;
 // Middleware para analizar los cuerpos de las solicitudes en formato JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Configuración de CORS
+const whitelist = ['https://tudominio.com', 'https://otrodominio.com', 'http://localhost:3000'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Acceso no autorizado'));
+    }
+  },
+};
+app.use(cors(corsOptions));
 
 // Ruta para manejar el envío del formulario
 app.post("/enviar-correo", (req, res) => {
