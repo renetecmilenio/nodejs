@@ -41,7 +41,7 @@ app.post("/enviar-correo", (req, res) => {
     from: "reno7882@gmail.com", // Cambiar por tu dirección de correo
     to: "rceron@javer.com.mx", // Dirección de correo a la que se enviará el formulario
     subject: "Nuevo mensaje desde el formulario de contacto",
-    text: `Nombre: ${nombre}\nTeléfono: ${telefono}\nEmail: ${email}\nDesarrollo: ${desarrollo}Mensaje: ${mensaje}`,
+    text: `Nombre: ${nombre}\nTeléfono: ${telefono}\nEmail: ${email}\nDesarrollo: ${desarrollo}\nMensaje: ${mensaje}`,
   };
 
   // Enviar el correo electrónico
