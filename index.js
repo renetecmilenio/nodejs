@@ -31,16 +31,16 @@ app.post("/enviar-correo", (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "reno7882@gmail.com", // Cambiar por tu dirección de correo desde donde se enviarán los correos
-      pass: "hvxg lsjg ypkz avpw", // Cambiar por la contraseña de tu correo
+      user: "grupojaver@gmail.com", // Cambiar por tu dirección de correo desde donde se enviarán los correos
+      pass: "okjy snbu tcks xavp", // Cambiar por la contraseña de tu correo
     },
   });
 
   // Configurar los datos del correo
   let mailOptions = {
-    from: "reno7882@gmail.com", // Cambiar por tu dirección de correo
+    from: "grupojaver@gmail.com", // Cambiar por tu dirección de correo
     to: "rceron@javer.com.mx", // Dirección de correo a la que se enviará el formulario
-    subject: "Nuevo mensaje desde el formulario de contacto",
+    subject: "Nuevo mensaje Sugerencia / recomendación",
     text: `Nombre: ${nombre}\nTeléfono: ${telefono}\nEmail: ${email}\nDesarrollo: ${desarrollo}\nMensaje: ${mensaje}`,
   };
 
