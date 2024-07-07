@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
+app.disable('x-powered-by')
 const PORT = process.env.PORT || 3000;
 
 // Middleware para analizar los cuerpos de las solicitudes en formato JSON
