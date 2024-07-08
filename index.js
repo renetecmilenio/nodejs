@@ -32,10 +32,10 @@ app.post("/enviar-correo", (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-   //  user: "grupojaver@gmail.com",  Cambiar por tu dirección de correo desde donde se enviarán los correos
-     //  pass: "okjy snbu tcks xavp", Cambiar por la contraseña de tu correo
-      user: "noreply@javer.com.mx", // Cambiar por tu dirección de correo desde donde se enviarán los correos
-      pass: "N0r3ply2020M", // Cambiar por la contraseña de tu correo
+    user: "grupojaver@gmail.com", //  Cambiar por tu dirección de correo desde donde se enviarán los correos
+      pass: "okjy snbu tcks xavp",  // Cambiar por la contraseña de tu correo
+     // user: "noreply@javer.com.mx",  Cambiar por tu dirección de correo desde donde se enviarán los correos
+    //  pass: "N0r3ply2020M",  Cambiar por la contraseña de tu correo
     },
   });
 
