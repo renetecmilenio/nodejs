@@ -5,14 +5,14 @@ const cors = require("cors");
 
 const app = express();
 app.disable('x-powered-by')
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5501;
 
 // Middleware para analizar los cuerpos de las solicitudes en formato JSON
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configuración de CORS
-const whitelist = ['https://javer.com.mx', 'https://www.javer.com.mx', 'http://localhost:5501/index.html']; 
+const whitelist = ['https://javer.com.mx', 'https://www.javer.com.mx', 'http://localhost:5501', 'http://127.0.0.1:5501']; 
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
